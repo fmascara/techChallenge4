@@ -128,8 +128,56 @@ st.plotly_chart(fig)
 st.markdown("<br><br>", unsafe_allow_html=True)
 
 st.subheader('Eventos históricos relevantes para a variação do preço')
-with st.expander('Guerra do Golfo (1990)', expanded=False):
-    st.write('')
+
+
+st.subheader('Relação entre os eventos históricos e o preço', anchor=False)
+
+
+with st.expander(('Guerra do Golfo (1990)'), expanded=False):
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Guerra do Golfo]", anchor=False)
+    st.write('A Guerra do Golfo aconteceu entre 02 de agosto de 1990 e 28 de fevereiro de 1991 no \
+             Oriente Médio. O conflito teve como motivação a invasão do Kuwait por tropas do Iraque, \
+             sob o regime de Saddam Hussein, resultando em uma coalizão internacional com o intuito \
+             de expulsar as tropas iraquianas.')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Reminiscências da Guerra Irã-Iraque:** Após a longa e custosa Guerra Irã-Iraque \
+                (1980-1988), o Iraque estava profundamente endividado, principalmente com o \
+                Kuwait e a Arábia Saudita. O Iraque acusava o Kuwait de roubar petróleo da reserva \
+                de Rumaila, que se estendia pela fronteira entre os dois países. Além disso, o \
+                Iraque alegava que o Kuwait estava excedendo suas quotas de produção de petróleo \
+                estabelecidas pela OPEP, contribuindo para a queda dos preços do petróleo, o que \
+                prejudicava a economia iraquiana.
+                * **Riqueza Petrolífera do Kuwait:** A invasão do Kuwait pelo Iraque foi, em parte, \
+                motivada pelo desejo de Saddam Hussein de controlar as vastas reservas de petróleo \
+                do Kuwait, que eram uma das maiores do mundo. O controle sobre essas reservas \
+                fortaleceria significativamente a posição econômica e política do Iraque.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Aumento e Oscilação dos Preços:** Durante o conflito, houve volatilidade nos preços,\
+                 que aumentaram com o início da guerra e voltaram a cair após a rápida vitória da coalizão \
+                e a segurança relativa do fornecimento de petróleo.
+                * **Sanções Econômicas:** Após a guerra, o Iraque enfrentou severas sanções econômicas \
+                impostas pelas Nações Unidas, que incluíam restrições à exportação de petróleo. Estas \
+                sanções tiveram um impacto devastador na economia iraquiana.
+                * **Mudanças na OPEP:** A guerra destacou a importância da estabilidade no mercado \
+                de petróleo e levou a uma maior cooperação entre os membros da OPEP para regular a \
+                produção e estabilizar os preços do petróleo.
+                """
+                )
+    dados_golfo = dados.loc[(dados['DATA'] >= '1988-01-01') & (dados['DATA'] <= '1993-12-31')].copy().reset_index()
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=dados_golfo['DATA'],
+        y=dados_golfo['PREÇO'],
+        mode='lines',
+        name='Preço'
+    ))
+    st.plotly_chart(fig)
+
+
+
 with st.expander('Atentado terrorista de 11/09/2001', expanded=False):
     st.write('')
 with st.expander('Guerra do Iraque (2003)', expanded=False):
