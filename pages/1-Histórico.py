@@ -26,47 +26,44 @@ stats = dados.describe()
 eventos = {
     'EVENTO': [
         'Guerra do Golfo',
-        'Atentados terroristas nos EUA',
-        'Guerra do Iraque',
+        'Crise Asiática',
+        'Guerra ao Terror',
         'Crise financeira global',
         'Primavera Árabe',
         'Grande produção e baixa demanda',
-        'Pandemia de COVID-19',
-        'Conflito Rússia-Ucrânia'
+        'Pandemia de COVID-19'
     ],
     'DATA INÍCIO': [
         '1990-08-02',
+        '1997-07-02',
         '2001-09-11',
-        '2003-03-20',
         '2008-03-14',
         '2010-12-17',
         '2014-11-26',
-        '2020-03-11',
-        '2022-02-24'
+        '2020-03-11'
     ],
     'DATA FIM': [
         '1991-02-28',
-        '2001-09-11',
+        '1999-03-31',
         '2011-12-15',
         '2009-02-17',
         '2013-12-31',
         '2016-11-30',
-        '2022-12-31',
-        '2023-02-24'
+        '2022-12-31'
     ]
 }
 df_eventos = pd.DataFrame(eventos)
 df_eventos['DATA INÍCIO'] = pd.to_datetime(df_eventos['DATA INÍCIO'])
 df_eventos['DATA FIM'] = pd.to_datetime(df_eventos['DATA FIM'])
 
-## VISUALIZAÇÃO:
-st.subheader(
-    ":red[Tech Challenge Fase 4]",
-    divider="red",
-)
-st.markdown("<br>", unsafe_allow_html=True)
 
-st.subheader('Histórico do petróleo Brent')
+
+
+
+## INÍCIO DA VISUALIZAÇÃO:
+st.subheader(":red[Tech Challenge Fase 4]", divider="red", anchor=False)
+st.markdown("<br>", unsafe_allow_html=True)
+st.subheader('Histórico do petróleo Brent', anchor=False)
 st.write('O Petróleo Brent, também conhecido como Brent Blend, \
             é um tipo de petróleo bruto leve e doce extraído do Mar \
             do Norte, entre a Noruega e o Reino Unido. Apesar de \
@@ -82,9 +79,13 @@ st.write('O preço do Brent é o principal referencial para a \
             Países Exportadores de Petróleo).')
 st.markdown("<br><br>", unsafe_allow_html=True)
 
+
+
+
+
 col1, col2, col3 = st.columns([2,1,1])
 with col1:
-    st.subheader('Variação do preço do Brent ao longo do tempo')
+    st.subheader('Variação do preço do Brent ao longo do tempo', anchor=False)
 with col2:
     ano_inicial = st.slider('Ano inicial na visualização', min_value=dados['DATA'].dt.year.min(), 
                     max_value=dados['DATA'].dt.year.max(), 
@@ -100,7 +101,7 @@ fig.add_trace(go.Scatter(
     x=dados_filtrados['DATA'],
     y=dados_filtrados['PREÇO'],
     mode='lines',
-    name='Preço Diário'
+    name='Preço'
 ))  
 for i, row in df_eventos_filtrados.iterrows():
     fig.add_trace(go.Scatter(
@@ -121,17 +122,17 @@ fig.update_layout(
         xanchor="center",  # Centralizar horizontalmente
         x=0.5  # Posicionar no centro
     ),
-    xaxis_title="Data",  # Label do eixo x
-    yaxis_title="Preço (US$)",  # Label do eixo y
+    xaxis_title="Data",
+    yaxis_title="Preço (US$)"
 )
 st.plotly_chart(fig)
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-st.subheader('Eventos históricos relevantes para a variação do preço')
+
+
 
 
 st.subheader('Relação entre os eventos históricos e o preço', anchor=False)
-
 
 with st.expander(('Guerra do Golfo (1990)'), expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
@@ -166,29 +167,229 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
                 produção e estabilizar os preços do petróleo.
                 """
                 )
-    dados_golfo = dados.loc[(dados['DATA'] >= '1988-01-01') & (dados['DATA'] <= '1993-12-31')].copy().reset_index()
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
+    dados_golfo = dados.loc[(dados['DATA'] >= '1990-01-01') & (dados['DATA'] <= '1991-07-31')].copy().reset_index()
+    dados_golfo_hl = dados_golfo.loc[(dados_golfo['DATA'] >= '1990-08-02') & (dados_golfo['DATA'] <= '1991-02-28')]
+    fig_golfo = go.Figure()
+    fig_golfo.add_trace(go.Scatter(
         x=dados_golfo['DATA'],
         y=dados_golfo['PREÇO'],
         mode='lines',
-        name='Preço'
-    ))
-    st.plotly_chart(fig)
+        name='Preço'))  
+    fig_golfo.add_trace(go.Scatter(
+        x=dados_golfo_hl['DATA'],
+        y=dados_golfo_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_golfo.update_layout(
+        yaxis=dict(range=[0, 60]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_golfo)
 
 
+with st.expander('Crise asiática (1997)', expanded=False):
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Crise asiática]", anchor=False)
+    st.write('Bla')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
 
-with st.expander('Atentado terrorista de 11/09/2001', expanded=False):
-    st.write('')
-with st.expander('Guerra do Iraque (2003)', expanded=False):
-    st.write('')
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_asia = dados.loc[(dados['DATA'] >= '1996-01-01') & (dados['DATA'] <= '2000-12-31')].copy().reset_index()
+    dados_asia_hl = dados_asia.loc[(dados_asia['DATA'] >= '1997-07-02') & (dados_asia['DATA'] <= '1999-03-31')]
+    fig_asia = go.Figure()
+    fig_asia.add_trace(go.Scatter(
+        x=dados_asia['DATA'],
+        y=dados_asia['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_asia.add_trace(go.Scatter(
+        x=dados_asia_hl['DATA'],
+        y=dados_asia_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_asia.update_layout(
+        yaxis=dict(range=[0, 50]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_asia)
+
+
+with st.expander('Guerra ao Terror (2001)', expanded=False):
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Guerra ao Terror]", anchor=False)
+    st.write('Após sofrer com os atentados de 11 de setembro de 2001, os Estados Unidos \
+             decidiram empreender uma “guerra contra o terror” apontando os governos que \
+             poderiam representar riscos à paz mundial. Nesse sentido, o presidente norte-americano \
+             George W. Bush e seu Conselho de Estado passaram a fazer uma campanha política \
+             pregando a intervenção no chamado “eixo do mal”. Entre os países que compunham esse \
+             grupo, estariam o Afeganistão, berço da Al-Qaeda - grupo responsável por \
+             coordenar os ataques - e o Iraque, ainda liderado pelo ditador Saddam Hussein.\
+             A Guerra ao Terror teve um impacto combinado significativo no mercado de petróleo, \
+             influenciando tanto a oferta quanto a demanda, além de adicionar \
+             uma camada de risco geopolítico que afetou os preços do petróleo a longo prazo.')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2005-07-31')].copy().reset_index()
+    dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2003-12-31')]
+    fig_terror = go.Figure()
+    fig_terror.add_trace(go.Scatter(
+        x=dados_terror['DATA'],
+        y=dados_terror['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_terror.add_trace(go.Scatter(
+        x=dados_terror_hl['DATA'],
+        y=dados_terror_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_terror.update_layout(
+        yaxis=dict(range=[0, 60]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_terror)
+
+
 with st.expander('Crise financeira global (2008)', expanded=False):
-    st.write('')
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Crise financeira global]", anchor=False)
+    st.write('Bla')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_crise = dados.loc[(dados['DATA'] >= '2007-01-01') & (dados['DATA'] <= '2009-12-31')].copy().reset_index()
+    dados_crise_hl = dados_crise.loc[(dados_crise['DATA'] >= '2008-03-14') & (dados_crise['DATA'] <= '2009-02-17')]
+    fig_crise = go.Figure()
+    fig_crise.add_trace(go.Scatter(
+        x=dados_crise['DATA'],
+        y=dados_crise['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_crise.add_trace(go.Scatter(
+        x=dados_crise_hl['DATA'],
+        y=dados_crise_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_crise.update_layout(
+        yaxis=dict(range=[0, 150]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_crise)
+
+
 with st.expander('Primavera Árabe (2010)', expanded=False):
-    st.write('')
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Primavera Árabe]", anchor=False)
+    st.write('Bla')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_prim = dados.loc[(dados['DATA'] >= '2009-07-01') & (dados['DATA'] <= '2014-12-31')].copy().reset_index()
+    dados_prim_hl = dados_prim.loc[(dados_prim['DATA'] >= '2010-12-17') & (dados_prim['DATA'] <= '2013-12-31')]
+    fig_prim = go.Figure()
+    fig_prim.add_trace(go.Scatter(
+        x=dados_prim['DATA'],
+        y=dados_prim['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_prim.add_trace(go.Scatter(
+        x=dados_prim_hl['DATA'],
+        y=dados_prim_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_prim.update_layout(
+        yaxis=dict(range=[0, 150]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_prim)
+
+
 with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
-    st.write('')
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Período de alta oferta e baixa demanda]", anchor=False)
+    st.write('Bla')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_ofdem = dados.loc[(dados['DATA'] >= '2013-01-01') & (dados['DATA'] <= '2017-12-31')].copy().reset_index()
+    dados_ofdem_hl = dados_ofdem.loc[(dados_ofdem['DATA'] >= '2014-11-26') & (dados_ofdem['DATA'] <= '2016-11-30')]
+    fig_ofdem = go.Figure()
+    fig_ofdem.add_trace(go.Scatter(
+        x=dados_ofdem['DATA'],
+        y=dados_ofdem['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_ofdem.add_trace(go.Scatter(
+        x=dados_ofdem_hl['DATA'],
+        y=dados_ofdem_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_ofdem.update_layout(
+        yaxis=dict(range=[0, 150]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_ofdem)
+
+
 with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
-    st.write('')
-with st.expander('Conflito Rússia-Ucrânia (2022)', expanded=False):
-    st.write('')
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Pandemia de COVID-19]", anchor=False)
+    st.write('Bla')
+    st.markdown("""
+                ##### Causas Relacionadas ao Petróleo:
+                * **Bla:** Bla.
+
+                ##### Consequências Relacionadas ao Petróleo:
+                * **Bla:** Bla
+                """
+                )
+    dados_pandemia = dados.loc[(dados['DATA'] >= '2019-01-01') & (dados['DATA'] <= '2023-12-31')].copy().reset_index()
+    dados_pandemia_hl = dados_pandemia.loc[(dados_pandemia['DATA'] >= '2020-03-11') & (dados_pandemia['DATA'] <= '2022-12-31')]
+    fig_pandemia = go.Figure()
+    fig_pandemia.add_trace(go.Scatter(
+        x=dados_pandemia['DATA'],
+        y=dados_pandemia['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_pandemia.add_trace(go.Scatter(
+        x=dados_pandemia_hl['DATA'],
+        y=dados_pandemia_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_pandemia.update_layout(
+        yaxis=dict(range=[0, 150]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    st.plotly_chart(fig_pandemia)
