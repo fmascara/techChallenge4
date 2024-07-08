@@ -18,6 +18,8 @@ dados = pd.read_csv('tabela preliminar ipea.txt', sep='\t')
 dados['PREÇO'] = dados['PREÇO'].str.replace(',', '.')
 dados['PREÇO'] = dados['PREÇO'].astype(float)
 dados['DATA'] = pd.to_datetime(dados['DATA'], format='%d/%m/%Y')
+dados.sort_values(by='DATA', ascending=True, inplace=True)
+dados.reset_index(drop=True, inplace=True)
 dados['MÊS'] = dados['DATA'].dt.month_name()
 dados['ANO'] = dados['DATA'].dt.year.astype(str)
 
@@ -167,8 +169,22 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
                 produção e estabilizar os preços do petróleo.
                 """
                 )
-    dados_golfo = dados.loc[(dados['DATA'] >= '1990-01-01') & (dados['DATA'] <= '1991-07-31')].copy().reset_index()
-    dados_golfo_hl = dados_golfo.loc[(dados_golfo['DATA'] >= '1990-08-02') & (dados_golfo['DATA'] <= '1991-02-28')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        st.markdown("""
+                ##### Variação de preço no período
+
+                No período que antecede a invasão do Kwait pelo Iraque, podemos ver uma ascenção \
+                no preço, que se mantém em alta e bastante instável até próximo da liberação do país \
+                pelas tropas lideradas pelos EUA. Após o término do conflito, o preço voltou a \
+                patamares próximos do que era antes.
+                """)
+    dados_golfo = dados.loc[(dados['DATA'] >= '1990-01-01') & (dados['DATA'] <= '1991-07-31')].copy()
+    dados_golfo.reset_index(drop=True, inplace=True)
+    dados_golfo_hl = dados_golfo.loc[(dados_golfo['DATA'] >= '1990-08-02') & (dados_golfo['DATA'] <= '1991-02-28')].copy()
+    dados_golfo_hl.reset_index(drop=True, inplace=True)
     fig_golfo = go.Figure()
     fig_golfo.add_trace(go.Scatter(
         x=dados_golfo['DATA'],
@@ -185,23 +201,66 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
         yaxis=dict(range=[0, 60]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_golfo)
+    with col2: st.plotly_chart(fig_golfo)
 
 
 with st.expander('Crise asiática (1997)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
-    st.subheader(f":blue[Crise asiática]", anchor=False)
-    st.write('Bla')
+    st.subheader(f":blue[Crise asiática - e outros fatores do final do século XX]", anchor=False)
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
+                A crise financeira asiática, que teve início em 1997, foi um período \
+                de turbulência econômica que afetou várias economias do Sudeste Asiático, \
+                levando a uma significativa queda na demanda por petróleo na região e contribuindo \
+                para a queda dos preços em 1998. Esta crise começou na Tailândia, \
+                com a desvalorização do baht, e rapidamente se espalhou para outros países \
+                da região, resultando em uma série de desvalorizações monetárias, quedas \
+                nas bolsas de valores e falências de empresas.
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
+                A recuperação econômica começou a se manifestar em 1999, após uma combinação de \
+                fatores internos e externos que ajudaram a estabilizar as economias afetadas e \
+                promover o crescimento. Entre as ações que propiciaram a reversão do cenário de crise \
+                podemos citar: a intervenção do FMI, com pacotes de resgate financeiro para os \
+                países mais afetados, incluindo Tailândia, Indonésia e Coreia do Sul; reformas \
+                econômicas nesses países, incluindo a reestruturação do setor financeiro, a \
+                melhoria da governança corporativa e a liberalização de mercados, que ajudaram a resolver \
+                problemas de insolvência e a restaurar a confiança internacional; e a desvalorização \
+                das moedas durante a crise, que embora tenha sido parte do problema, no médio prazo\
+                tornou as exportações asiáticas mais competitivas no mercado global e acabou por atrair \
+                investidores estrangeiros.
+                
+                Paralelamente ao cenário de dificuldade econômica da Ásia, a OPEP e alguns países não membros, \
+                como o México, acordaram em reduzir a produção de petróleo em 1998, para estabilizar \
+                os preços que estavam em queda. Este esforço conjunto foi reforçado em março de 1999, \
+                quando a OPEP implementou novos cortes de produção, ajudando a reduzir o excesso de \
+                oferta e a estabilizar o mercado.
+
+                Adicionalmente, a recuperação das economias asiáticas e o crescimento econômico global, \
+                especialmente nos Estados Unidos, aumentaram a demanda por petróleo. Embora o final \
+                dos anos 1990 não tenha testemunhado grandes conflitos que impactassem diretamente a produção \
+                de petróleo, a instabilidade política em algumas regiões produtoras e a especulação nos mercados \
+                financeiros adicionaram uma camada de incerteza que influenciou os preços. Esses fatores \
+                combinados contribuíram para a ascensão dos preços do petróleo a partir de fevereiro de 1999, \
+                marcando o fim de um período de baixa e o início de uma nova fase de recuperação do mercado.
+
                 """
                 )
-    dados_asia = dados.loc[(dados['DATA'] >= '1996-01-01') & (dados['DATA'] <= '2000-12-31')].copy().reset_index()
-    dados_asia_hl = dados_asia.loc[(dados_asia['DATA'] >= '1997-07-02') & (dados_asia['DATA'] <= '1999-03-31')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        st.markdown("""
+                ##### Variação de preço no período
+
+                A data de 02/07/97 marca o início da crise, e após uma pequena guinada para cima, o preço\
+                entra em uma evidente queda. No meio dessa descida, ocorrem os dois acordos da OPEP \
+                (jul/1998 e mar/1999) para cortar a produção e tentar conter a derrocada. A data de 31/03/1999 \
+                marca o fim do período de interesse, após o qual vemos uma forte ascensão do preço do \
+                petróleo, acima da média do período anterior à crise.
+                """)
+    dados_asia = dados.loc[(dados['DATA'] >= '1996-01-01') & (dados['DATA'] <= '2000-12-31')].copy()
+    dados_asia.reset_index(drop=True, inplace=True)
+    dados_asia_hl = dados_asia.loc[(dados_asia['DATA'] >= '1997-07-02') & (dados_asia['DATA'] <= '1999-03-31')].copy()
+    dados_asia_hl.reset_index(drop=True, inplace=True)
     fig_asia = go.Figure()
     fig_asia.add_trace(go.Scatter(
         x=dados_asia['DATA'],
@@ -218,7 +277,7 @@ with st.expander('Crise asiática (1997)', expanded=False):
         yaxis=dict(range=[0, 50]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_asia)
+    with col2: st.plotly_chart(fig_asia)
 
 
 with st.expander('Guerra ao Terror (2001)', expanded=False):
@@ -241,9 +300,17 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
                 ##### Consequências Relacionadas ao Petróleo:
                 * **Bla:** Bla
                 """
-                )
-    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2005-07-31')].copy().reset_index()
-    dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2003-12-31')]
+                )    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+                ##### Variação de preço no período
+
+                Bla.
+                """)
+    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2005-07-31')].copy()
+    dados_terror.reset_index(drop=True, inplace=True)
+    dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2003-12-31')].copy()
+    dados_terror_hl.reset_index(drop=True, inplace=True)
     fig_terror = go.Figure()
     fig_terror.add_trace(go.Scatter(
         x=dados_terror['DATA'],
@@ -275,8 +342,16 @@ with st.expander('Crise financeira global (2008)', expanded=False):
                 * **Bla:** Bla
                 """
                 )
-    dados_crise = dados.loc[(dados['DATA'] >= '2007-01-01') & (dados['DATA'] <= '2009-12-31')].copy().reset_index()
-    dados_crise_hl = dados_crise.loc[(dados_crise['DATA'] >= '2008-03-14') & (dados_crise['DATA'] <= '2009-02-17')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+                ##### Variação de preço no período
+
+                Bla.
+                """)
+    dados_crise = dados.loc[(dados['DATA'] >= '2007-01-01') & (dados['DATA'] <= '2009-12-31')].copy()
+    dados_crise.reset_index(drop=True, inplace=True)
+    dados_crise_hl = dados_crise.loc[(dados_crise['DATA'] >= '2008-03-14') & (dados_crise['DATA'] <= '2009-02-17')].copy()
+    dados_crise_hl.reset_index(drop=True, inplace=True)
     fig_crise = go.Figure()
     fig_crise.add_trace(go.Scatter(
         x=dados_crise['DATA'],
@@ -308,8 +383,16 @@ with st.expander('Primavera Árabe (2010)', expanded=False):
                 * **Bla:** Bla
                 """
                 )
-    dados_prim = dados.loc[(dados['DATA'] >= '2009-07-01') & (dados['DATA'] <= '2014-12-31')].copy().reset_index()
-    dados_prim_hl = dados_prim.loc[(dados_prim['DATA'] >= '2010-12-17') & (dados_prim['DATA'] <= '2013-12-31')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+                ##### Variação de preço no período
+
+                Bla.
+                """)
+    dados_prim = dados.loc[(dados['DATA'] >= '2009-07-01') & (dados['DATA'] <= '2014-12-31')].copy()
+    dados_prim.reset_index(drop=True, inplace=True)
+    dados_prim_hl = dados_prim.loc[(dados_prim['DATA'] >= '2010-12-17') & (dados_prim['DATA'] <= '2013-12-31')].copy()
+    dados_prim_hl.reset_index(drop=True, inplace=True)
     fig_prim = go.Figure()
     fig_prim.add_trace(go.Scatter(
         x=dados_prim['DATA'],
@@ -341,8 +424,16 @@ with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
                 * **Bla:** Bla
                 """
                 )
-    dados_ofdem = dados.loc[(dados['DATA'] >= '2013-01-01') & (dados['DATA'] <= '2017-12-31')].copy().reset_index()
-    dados_ofdem_hl = dados_ofdem.loc[(dados_ofdem['DATA'] >= '2014-11-26') & (dados_ofdem['DATA'] <= '2016-11-30')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+                ##### Variação de preço no período
+
+                Bla.
+                """)
+    dados_ofdem = dados.loc[(dados['DATA'] >= '2013-01-01') & (dados['DATA'] <= '2017-12-31')].copy()
+    dados_ofdem.reset_index(drop=True, inplace=True)
+    dados_ofdem_hl = dados_ofdem.loc[(dados_ofdem['DATA'] >= '2014-11-26') & (dados_ofdem['DATA'] <= '2016-11-30')].copy()
+    dados_ofdem_hl.reset_index(drop=True, inplace=True)
     fig_ofdem = go.Figure()
     fig_ofdem.add_trace(go.Scatter(
         x=dados_ofdem['DATA'],
@@ -374,8 +465,16 @@ with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
                 * **Bla:** Bla
                 """
                 )
-    dados_pandemia = dados.loc[(dados['DATA'] >= '2019-01-01') & (dados['DATA'] <= '2023-12-31')].copy().reset_index()
-    dados_pandemia_hl = dados_pandemia.loc[(dados_pandemia['DATA'] >= '2020-03-11') & (dados_pandemia['DATA'] <= '2022-12-31')]
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""
+                ##### Variação de preço no período
+
+                Bla.
+                """)
+    dados_pandemia = dados.loc[(dados['DATA'] >= '2019-01-01') & (dados['DATA'] <= '2023-12-31')].copy()
+    dados_pandemia.reset_index(drop=True, inplace=True)
+    dados_pandemia_hl = dados_pandemia.loc[(dados_pandemia['DATA'] >= '2020-03-11') & (dados_pandemia['DATA'] <= '2022-12-31')].copy()
+    dados_pandemia_hl.reset_index(drop=True, inplace=True)
     fig_pandemia = go.Figure()
     fig_pandemia.add_trace(go.Scatter(
         x=dados_pandemia['DATA'],
