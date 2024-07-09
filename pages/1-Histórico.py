@@ -75,10 +75,10 @@ st.write('O preço do Brent é o principal referencial para a \
             indústria petrolífera, servindo de padrão global para \
             a precificação de outros tipos de petróleo, e de base para a negociação \
             de contratos futuros e derivativos. Quando se diz que o \
-            petróleo "subiu" ou "desceu", é do preço do Brent que \
+            petróleo "subiu" ou "desceu", normalmente é do preço do Brent que \
             se está falando. Devido a essa importância, sua cotação \
             serve de medida para decisões da OPEP (Organização dos \
-            Países Exportadores de Petróleo).')
+            Países Exportadores de Petróleo) e outros países produtores.')
 st.markdown("<br><br>", unsafe_allow_html=True)
 
 
@@ -139,11 +139,12 @@ st.subheader('Relação entre os eventos históricos e o preço', anchor=False)
 with st.expander(('Guerra do Golfo (1990)'), expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Guerra do Golfo]", anchor=False)
-    st.write('A Guerra do Golfo aconteceu entre 02 de agosto de 1990 e 28 de fevereiro de 1991 no \
-             Oriente Médio. O conflito teve como motivação a invasão do Kuwait por tropas do Iraque, \
-             sob o regime de Saddam Hussein, resultando em uma coalizão internacional com o intuito \
-             de expulsar as tropas iraquianas.')
     st.markdown("""
+                A Guerra do Golfo aconteceu entre 02 de agosto de 1990 e 28 de fevereiro de 1991 no \
+                Oriente Médio. O conflito teve como motivação a invasão do Kuwait por tropas do Iraque, \
+                sob o regime de Saddam Hussein, resultando em uma coalizão internacional com o intuito \
+                de expulsar as tropas iraquianas.
+                
                 As causas do conflito guardam relação estreita com o petróleo. Após a longa \
                 e custosa Guerra Irã-Iraque \
                 (1980-1988), o Iraque estava profundamente endividado, principalmente com o \
@@ -311,7 +312,9 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
                 geopolítico elevado, contribuiu para a manutenção de preços mais altos.
                 """)
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("""
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("""
                 ##### Variação de preço no período
 
                 A Guerra ao Terror teve um impacto combinado significativo no mercado de petróleo, \
@@ -352,7 +355,7 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
         yaxis=dict(range=[0, 60]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_terror)
+    with col2: st.plotly_chart(fig_terror)
 
 
 with st.expander('Crise financeira global (2008)', expanded=False):
@@ -517,24 +520,58 @@ with st.expander('Primavera Árabe (2010)', expanded=False):
 with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Período de alta oferta e baixa demanda]", anchor=False)
-    st.write('Bla')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
+                Este não é um evento, mas um período específico do mercado global de petróleo, \
+                particularmente entre o final de 2014 e 2016. Durante esse tempo, a OPEP decidiu \
+                não reduzir sua produção de petróleo, apesar da queda nos preços globais, \
+                o que teve impactos significativos no mercado.
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
+                As causas para a queda do valor do Brent foram um conjunto de fatores. Houve um aumento \
+                significativo na produção de petróleo de xisto nos Estados Unidos, que contribuiu \
+                para um excesso de oferta no mercado global. Outros países não membros da OPEP, como a \
+                Rússia e o Canadá, também aumentaram sua produção, contribuindo para a oferta excessiva. \
+                Ao mesmo tempo, a demanda global por petróleo não cresceu conforme o esperado devido \
+                a uma desaceleração econômica em várias regiões, incluindo a China e a Europa.
+
+                Em sua reunião de novembro de 2014, a OPEP, liderada pela Arábia Saudita, decidiu \
+                manter sua produção inalterada, apesar da queda nos preços. A decisão foi vista \
+                como uma tentativa de manter sua participação de mercado e pressionar os produtores \
+                de petróleo de xisto nos EUA, cuja produção é mais cara. Nesse sentido, a estratégia \
+                deu frutos, já que muitos desses produtores enfrentaram dificuldades financeiras e \
+                foram forçados a reduzir ou fechar operações. Porém, os preços do petróleo Brent caíram \
+                drasticamente, de cerca de US\$80 por barril em novembro de 2014 para menos de US\$30 \
+                por barril no início de 2016. Por um lado, países cuja economia depende fortemente da \
+                exportação de petróleo, como Venezuela, Nigéria e Rússia, enfrentaram graves dificuldades \
+                econômicas devido à queda nos preços. Por outro, países consumidores se \
+                beneficiaram dos preços mais baixos, o que ajudou a reduzir os custos de energia e \
+                apoiar o crescimento econômico.
+
+                Em novembro de 2016, a OPEP e vários países não membros, incluindo a Rússia, \
+                concordaram em cortar a produção em cerca de 1,8 milhões de barris por dia. Esse \
+                acordo foi estendido e mantido em várias reuniões subsequentes, ajudando a reduzir \
+                o excesso de oferta no mercado global. A OPEP e seus aliados, conhecidos coletivamente \
+                como OPEP+, continuaram a coordenar suas políticas de produção, estendendo os \
+                cortes e adaptando suas estratégias conforme necessário para equilibrar o mercado.
                 """
                 )
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("""
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("""
                 ##### Variação de preço no período
 
-                Bla.
+                À altura em que a OPEP tomou a decisão de não diminuir o ritmo de produção, o valor do \
+                Brent já havia caído de cerca de US\$ 110 para US\$ 85. No início de 2015, abaixaria para \
+                o patamar dos US\$ 45 e, após um ano de sobe-e-desce, chegaria a um fundo de US\$ 26 - \
+                havia mais de 10 anos que o valor não chegava abaixo dos US\$ 30.
+
+                O fim do período de interesse é pontuado pelo acordo de novembro de 2016, após o qual \
+                os valores sobem com um pouco mais de força, retornando à faixa dos US\$ 50 em meados \
+                de 2017.
                 """)
-    dados_ofdem = dados.loc[(dados['DATA'] >= '2013-01-01') & (dados['DATA'] <= '2017-12-31')].copy()
+    dados_ofdem = dados.loc[(dados['DATA'] >= '2013-01-01') & (dados['DATA'] <= '2018-07-31')].copy()
     dados_ofdem.reset_index(drop=True, inplace=True)
-    dados_ofdem_hl = dados_ofdem.loc[(dados_ofdem['DATA'] >= '2014-11-26') & (dados_ofdem['DATA'] <= '2016-11-30')].copy()
+    dados_ofdem_hl = dados_ofdem.loc[(dados_ofdem['DATA'] >= '2014-11-01') & (dados_ofdem['DATA'] <= '2016-11-30')].copy()
     dados_ofdem_hl.reset_index(drop=True, inplace=True)
     fig_ofdem = go.Figure()
     fig_ofdem.add_trace(go.Scatter(
@@ -552,30 +589,60 @@ with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
         yaxis=dict(range=[0, 150]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_ofdem)
+    with col2: st.plotly_chart(fig_ofdem)
 
 
 with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Pandemia de COVID-19]", anchor=False)
-    st.write('Bla')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
+                A pandemia de COVID-19 teve um impacto dramático nos preços do petróleo \
+                Brent devido a uma série de fatores que afetaram tanto a oferta quanto \
+                a demanda no mercado global. A implementação de lockdowns e outras \
+                restrições de mobilidade em todo o mundo para conter a disseminação \
+                do vírus resultou em uma queda abrupta na demanda por petróleo. Viagens \
+                aéreas, transporte terrestre e atividades industriais diminuíram drasticamente.
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
+                No início de 2020, a falha em chegar a um acordo sobre cortes de produção \
+                entre a OPEP e a Rússia levou a uma guerra de preços, com ambos os lados \
+                aumentando a produção, exacerbando o excesso de oferta no mercado. A rápida \
+                acumulação de estoques de petróleo devido à queda na demanda levou a \
+                preocupações sobre a capacidade de armazenamento global, com tanques e \
+                navios-tanque ficando lotados. Finalmente, em abril daquele ano, quando o \
+                valor do Brent derreteu para a casa dos US\$9, chegou-se \
+                a um acordo histórico para cortar a produção em aproximadamente 9,7 milhões \
+                de barris por dia, na tentativa de equilibrar o mercado e apoiar os preços. \
+                Este foi o maior corte de produção já acordado na história.
+
+                Os lockdowns começaram a ser gradualmente levantados em diferentes momentos ao \
+                redor do mundo, dependendo da situação específica de cada país e região em \
+                relação ao controle da pandemia. Mas, de maneira geral, podemos dizer que o \
+                relaxamento das restrições de contato social começou a acontecer entre maio \
+                e agosto de 2020. E, com a aprovação e início da distribuição das vacinas \
+                contra o COVID-19 no final daquele ano, muitos países começaram a planejar e \
+                implementar uma reabertura mais ampla de suas economias no início de 2021. \
+                A disponibilidade de vacinas foi, portanto, um fator chave para a \
+                recuperação econômica e o aumento da demanda por petróleo.
                 """
                 )
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("""
-                ##### Variação de preço no período
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("""
+                    ##### Variação de preço no período
 
-                Bla.
-                """)
-    dados_pandemia = dados.loc[(dados['DATA'] >= '2019-01-01') & (dados['DATA'] <= '2023-12-31')].copy()
+                    A declaração de estado de pandemia foi feita em 11/03/2020, mas os preços já vinham \
+                    despencando desde que notícias de casos da doença e de restrições radicais de mobilidade \
+                    na China se espalhavam pelo mundo. Em 4 meses, de janeiro a abril de 2020, o valor foi de US\$ 70,25 \
+                    para US\$ 9,12, o segundo menor valor histórico registrado nesta série temporal. Uma derrocada \
+                    de 87%, maior que aquela registrada durante a crise financeira de 2008.  
+                    A pandemia só viria a ter um fim "oficial" em maio de 2023, mas podemos observar que a \
+                    retomada de alta dos preços acompanhou a retirada de medidas restritivas na metade de \
+                    2020 e ganhou força após o início da vacinação, no começo do ano seguinte.
+                    """)
+    dados_pandemia = dados.loc[(dados['DATA'] >= '2019-01-01') & (dados['DATA'] <= '2021-12-31')].copy()
     dados_pandemia.reset_index(drop=True, inplace=True)
-    dados_pandemia_hl = dados_pandemia.loc[(dados_pandemia['DATA'] >= '2020-03-11') & (dados_pandemia['DATA'] <= '2022-12-31')].copy()
+    dados_pandemia_hl = dados_pandemia.loc[(dados_pandemia['DATA'] >= '2020-01-01') & (dados_pandemia['DATA'] <= '2021-03-31')].copy()
     dados_pandemia_hl.reset_index(drop=True, inplace=True)
     fig_pandemia = go.Figure()
     fig_pandemia.add_trace(go.Scatter(
@@ -590,7 +657,7 @@ with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
         name='Período de interesse',
         line=dict(color='red')))
     fig_pandemia.update_layout(
-        yaxis=dict(range=[0, 150]),
+        yaxis=dict(range=[0, 120]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_pandemia)
+    with col2: st.plotly_chart(fig_pandemia)
