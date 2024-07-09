@@ -144,27 +144,27 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
              sob o regime de Saddam Hussein, resultando em uma coalizão internacional com o intuito \
              de expulsar as tropas iraquianas.')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Reminiscências da Guerra Irã-Iraque:** Após a longa e custosa Guerra Irã-Iraque \
+                As causas do conflito guardam relação estreita com o petróleo. Após a longa \
+                e custosa Guerra Irã-Iraque \
                 (1980-1988), o Iraque estava profundamente endividado, principalmente com o \
                 Kuwait e a Arábia Saudita. O Iraque acusava o Kuwait de roubar petróleo da reserva \
-                de Rumaila, que se estendia pela fronteira entre os dois países. Além disso, o \
-                Iraque alegava que o Kuwait estava excedendo suas quotas de produção de petróleo \
+                de Rumaila, que se estendia pela fronteira entre os dois países. Alegava também que \
+                o país vizinho estava excedendo suas quotas de produção \
                 estabelecidas pela OPEP, contribuindo para a queda dos preços do petróleo, o que \
                 prejudicava a economia iraquiana.
-                * **Riqueza Petrolífera do Kuwait:** A invasão do Kuwait pelo Iraque foi, em parte, \
+                Portanto, a invasão do Kuwait pelo Iraque foi, em parte, \
                 motivada pelo desejo de Saddam Hussein de controlar as vastas reservas de petróleo \
                 do Kuwait, que eram uma das maiores do mundo. O controle sobre essas reservas \
                 fortaleceria significativamente a posição econômica e política do Iraque.
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Aumento e Oscilação dos Preços:** Durante o conflito, houve volatilidade nos preços,\
-                 que aumentaram com o início da guerra e voltaram a cair após a rápida vitória da coalizão \
-                e a segurança relativa do fornecimento de petróleo.
-                * **Sanções Econômicas:** Após a guerra, o Iraque enfrentou severas sanções econômicas \
+                Durante o conflito, houve volatilidade nos preços,\
+                que aumentaram com o início da guerra e voltaram a cair após a rápida vitória da coalizão \
+                e a segurança relativa do fornecimento de petróleo. Após a guerra, o Iraque \
+                enfrentou severas sanções econômicas \
                 impostas pelas Nações Unidas, que incluíam restrições à exportação de petróleo. Estas \
                 sanções tiveram um impacto devastador na economia iraquiana.
-                * **Mudanças na OPEP:** A guerra destacou a importância da estabilidade no mercado \
+                
+                A guerra destacou a importância da estabilidade no mercado \
                 de petróleo e levou a uma maior cooperação entre os membros da OPEP para regular a \
                 produção e estabilizar os preços do petróleo.
                 """
@@ -178,8 +178,10 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
 
                 No período que antecede a invasão do Kwait pelo Iraque, podemos ver uma ascenção \
                 no preço, que se mantém em alta e bastante instável até próximo da liberação do país \
-                pelas tropas lideradas pelos EUA. Após o término do conflito, o preço voltou a \
-                patamares próximos do que era antes.
+                pelas tropas lideradas pelos EUA. 
+                Durante o período de guerra, o preço passou a barreira dos US\$40 pela primeira \
+                vez nessa série histórica. Após o término do conflito, o preço voltou a \
+                patamares próximos do que era antes (em torno dos US\$20).
                 """)
     dados_golfo = dados.loc[(dados['DATA'] >= '1990-01-01') & (dados['DATA'] <= '1991-07-31')].copy()
     dados_golfo.reset_index(drop=True, inplace=True)
@@ -252,10 +254,12 @@ with st.expander('Crise asiática (1997)', expanded=False):
                 ##### Variação de preço no período
 
                 A data de 02/07/97 marca o início da crise, e após uma pequena guinada para cima, o preço\
-                entra em uma evidente queda. No meio dessa descida, ocorrem os dois acordos da OPEP \
+                entra em uma evidente queda. Nesse período o preço atingiu o seu valor mínimo histórico, \
+                US$ 9,10 em 10/12/1998. 
+                No meio dessa descida, ocorrem os dois acordos da OPEP \
                 (jul/1998 e mar/1999) para cortar a produção e tentar conter a derrocada. A data de 31/03/1999 \
                 marca o fim do período de interesse, após o qual vemos uma forte ascensão do preço do \
-                petróleo, acima da média do período anterior à crise.
+                petróleo, para patamares acima daqueles observados no período anterior à crise.
                 """)
     dados_asia = dados.loc[(dados['DATA'] >= '1996-01-01') & (dados['DATA'] <= '2000-12-31')].copy()
     dados_asia.reset_index(drop=True, inplace=True)
@@ -283,33 +287,54 @@ with st.expander('Crise asiática (1997)', expanded=False):
 with st.expander('Guerra ao Terror (2001)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Guerra ao Terror]", anchor=False)
-    st.write('Após sofrer com os atentados de 11 de setembro de 2001, os Estados Unidos \
-             decidiram empreender uma “guerra contra o terror” apontando os governos que \
-             poderiam representar riscos à paz mundial. Nesse sentido, o presidente norte-americano \
-             George W. Bush e seu Conselho de Estado passaram a fazer uma campanha política \
-             pregando a intervenção no chamado “eixo do mal”. Entre os países que compunham esse \
-             grupo, estariam o Afeganistão, berço da Al-Qaeda - grupo responsável por \
-             coordenar os ataques - e o Iraque, ainda liderado pelo ditador Saddam Hussein.\
-             A Guerra ao Terror teve um impacto combinado significativo no mercado de petróleo, \
-             influenciando tanto a oferta quanto a demanda, além de adicionar \
-             uma camada de risco geopolítico que afetou os preços do petróleo a longo prazo.')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
+                'Após sofrer com os atentados de 11 de setembro de 2001, os Estados Unidos \
+                decidiram empreender uma “guerra contra o terror” apontando os governos que \
+                poderiam representar riscos à paz mundial. Nesse sentido, o presidente norte-americano \
+                George W. Bush e seu Conselho de Estado passaram a fazer uma campanha política \
+                pregando a intervenção no chamado “eixo do mal”. Entre os países que compunham esse \
+                grupo, estariam o Afeganistão, berço da Al-Qaeda - grupo responsável por \
+                coordenar os ataques - e o Iraque, ainda liderado pelo ditador Saddam Hussein.\
+                O mundo todo, entretanto, questionava se as razões invocadas pelo governo \
+                norte-americano para a empreitada - eliminar armas de destruição em massa, combater o \
+                terrorismo, prevenir ameaças contra Estados vizinhos, derrubar a ditadura de \
+                Saddam Hussein - não se prestavam unicamente a encobrir um evidente interesse nas \
+                reservas de petróleo iraquianas, uma das maiores do mundo. 
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
-                """
-                )    
+                A invasão do Afeganistão em outubro de 2002 e, principalmente, do Iraque em março de 2003 \
+                causaram uma elevação nos preços do petróleo, após a queda inicial que seguiu-se aos atos terroristas. \
+                A incerteza sobre a continuidade da produção iraquiana e a possibilidade de danos à infraestrutura \
+                petrolífera levaram a essa alta. A Guerra ao Terror também teve efeitos de longo prazo no \
+                mercado de petróleo ao influenciar os investimentos em exploração e produção. \
+                A instabilidade na região do Oriente Médio fez com que as empresas petrolíferas reconsiderassem \
+                investimentos e aumentassem os custos de segurança. Isso, combinado com a percepção de risco \
+                geopolítico elevado, contribuiu para a manutenção de preços mais altos.
+                """)
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
                 ##### Variação de preço no período
 
-                Bla.
+                A Guerra ao Terror teve um impacto combinado significativo no mercado de petróleo, \
+                influenciando tanto a oferta quanto a demanda, além de adicionar \
+                uma camada de risco geopolítico que afetou os preços do petróleo a longo prazo.
+
+                Imediatamente após os atentados, vemos uma curva decrescente no preço. Normalmente, \
+                a incerteza quanto ao abastecimento de um produto tão essencial leva a altas nos preços, \
+                mas os atentados causaram uma queda generalizada no mercado financeiro. Por exemplo, a \
+                Bolsa de NY permaneceu fechada por vários dias e, quando reabriu, sofreu uma das maiores \
+                quedas da sua história. O medo inicial pode ter levado investidores a vender por pânico \
+                e reavaliar seus portifólios buscando ativos mais seguros, pressionando os preços do \
+                petróleo para baixo.
+
+                Enquanto os Estados Unidos se preparavam para a invasão do Afeganistão, em out/2001, \
+                e do Iraque, em mar/2002, os preços voltaram a subir. No entanto, a Guerra do Iraque durou \
+                mais de 7 anos (2003 a 2011); a instabilidade causada no mercado nesse período elevou \
+                os preços para patamares nunca atingidos antes. A barreira dos US\$50 foi ultrapassada pela \
+                primeira vez em out/2004, e a dos US\$100 em mar/2008.
                 """)
-    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2005-07-31')].copy()
+    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2008-07-31')].copy()
     dados_terror.reset_index(drop=True, inplace=True)
-    dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2003-12-31')].copy()
+    dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2006-12-31')].copy()
     dados_terror_hl.reset_index(drop=True, inplace=True)
     fig_terror = go.Figure()
     fig_terror.add_trace(go.Scatter(
@@ -333,20 +358,52 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
 with st.expander('Crise financeira global (2008)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Crise financeira global]", anchor=False)
-    st.write('Bla')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
+                Antes da crise, o crescimento econômico robusto em economias emergentes como \
+                China e Índia aumentou significativamente a demanda por petróleo. O crescimento \
+                industrial e a expansão da infraestrutura nesses países aumentaram o \
+                consumo de energia. Nos Estados Unidos e em outros países desenvolvidos, \
+                o consumo de combustíveis continuava alto, contribuindo para a pressão sobre \
+                a demanda global por petróleo. Por outro lado, a ocupação norte-americana no Iraque e novos conflitos que \
+                ocorriam no Oriente Médio ameaçavam a segurança das rotas de fornecimento \
+                de petróleo e aumentavam o risco geopolítico, elevando os preços.
 
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
+                Além disso, com a percepção de petróleo e outras commodities como um hedge (proteção) contra a \
+                inflação e a depreciação do dólar, houve um aumento significativo na especulação \
+                financeira no mercado de futuros de petróleo. Investidores buscavam ganhos com a alta \
+                dos preços, alimentando ainda mais a escalada.
+
+                Com o colapso do Lehman Brothers em setembro de 2008, desencadeou-se a crise, que levou \
+                a uma recessão econômica global. A desaceleração econômica reduziu drasticamente a \
+                demanda por petróleo, especialmente nos setores de transporte e indústria. A recessão \
+                nos Estados Unidos, Europa e outras economias desenvolvidas resultou em uma queda \
+                abrupta no consumo de petróleo, contribuindo para a queda dos preços.
+
+                Com a queda na demanda, os estoques de petróleo aumentaram. Os países \
+                começaram a acumular estoques, exacerbando o desequilíbrio entre oferta e demanda. A \
+                OPEP tentou responder à queda dos preços com cortes na produção, mas essas \
+                medidas levaram tempo para ter efeito e estabilizar o mercado.
+
+                No mercado financeiro, com o cenário se invertendo, os investidores buscaram \
+                liquidez e venderam seus  ativos, incluindo contratos futuros de petróleo. A venda \
+                em massa pressionou ainda mais os preços para baixo.
                 """
                 )
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("""
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("""
                 ##### Variação de preço no período
 
-                Bla.
+                A crise financeira global de 2008 causou uma volatilidade extrema nos preços do \
+                petróleo e uma variação bastante notável: queda de 77% em três meses. \
+                A alta histórica de cerca de US\$143 por barril em julho de 2008 foi \
+                impulsionada por um forte crescimento da demanda, restrições na oferta e \
+                especulação no mercado. A subsequente queda acentuada para cerca de US\$33 por \
+                barril em dezembro do mesmo ano foi resultado da queda na demanda devido à \
+                recessão global, liquidação de ativos por parte dos investidores, aumento dos \
+                estoques e apreciação do dólar. A crise financeira mostrou como os mercados de \
+                petróleo são sensíveis a mudanças econômicas globais e a eventos financeiros imprevistos.
                 """)
     dados_crise = dados.loc[(dados['DATA'] >= '2007-01-01') & (dados['DATA'] <= '2009-12-31')].copy()
     dados_crise.reset_index(drop=True, inplace=True)
@@ -368,30 +425,75 @@ with st.expander('Crise financeira global (2008)', expanded=False):
         yaxis=dict(range=[0, 150]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_crise)
+    with col2: st.plotly_chart(fig_crise)
 
 
 with st.expander('Primavera Árabe (2010)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Primavera Árabe]", anchor=False)
-    st.write('Bla')
     st.markdown("""
-                ##### Causas Relacionadas ao Petróleo:
-                * **Bla:** Bla.
-
-                ##### Consequências Relacionadas ao Petróleo:
-                * **Bla:** Bla
-                """
-                )
+                A Primavera Árabe foi uma série de protestos, revoluções e levantes que se espalharam pelo \
+                mundo árabe a partir de dezembro de 2010, resultando em mudanças políticas significativas \
+                em vários países. Esse período de instabilidade teve um impacto direto nos preços do petróleo \
+                Brent, dada a importância da região do Oriente Médio e do Norte da África para a produção \
+                global de petróleo.
+                """)
+    st.markdown('**Principais Marcos e Movimentos**')
+    st.markdown("""
+                * Tunísia (Dezembro 2010 - Janeiro 2011):
+                    - Início dos Protestos: A imolação de Mohamed Bouazizi, um vendedor de rua, em dezembro \
+                de 2010 desencadeou protestos massivos contra o governo. Em janeiro de 2011, o presidente \
+                Zine El Abidine Ben Ali foi deposto.
+                    - Impacto no Petróleo: Embora a Tunísia não seja um grande produtor, o \
+                sucesso inicial dos protestos inspirou movimentos em outros países, aumentando a incerteza \
+                regional.
+                """)
+    st.markdown("""
+                * Egito (Janeiro - Fevereiro 2011):
+                    - Protestos na Praça Tahrir: Manifestações massivas levaram à queda do presidente Hosni \
+                Mubarak em fevereiro de 2011, após 30 anos no poder.
+                    - Impacto no Petróleo: O Egito controla o Canal de Suez e o Oleoduto SUMED, rotas \
+                críticas para o transporte de petróleo. A instabilidade levantou preocupações sobre possíveis \
+                interrupções no seu trânsito.
+                """)
+    st.markdown("""
+                * Líbia (Fevereiro - Outubro 2011):
+                    - Guerra Civil: Protestos contra o regime de Muammar Gaddafi evoluíram \
+                para uma guerra civil. Em outubro de 2011, Gaddafi foi capturado e morto.
+                    - Impacto no Petróleo: A Líbia, um grande produtor, viu sua produção cair \
+                drasticamente durante a guerra civil, afetando significativamente os preços globais.
+                """)
+    st.markdown("""
+                * Síria (Março 2011 - Presente):
+                    - Guerra Civil: Protestos contra o presidente Bashar al-Assad evoluíram para \
+                uma prolongada guerra civil, ainda em andamento.
+                    - Impacto no Petróleo: Embora a produção de petróleo da Síria não seja grande \
+                em termos globais, a guerra civil contribuiu para a instabilidade regional.
+                """)
+    st.markdown("""
+                * Bahrein (Fevereiro - Março 2011):
+                    - Protestos e Repressão: Protestos liderados pela maioria xiita contra a monarquia \
+                sunita foram fortemente reprimidos.
+                    - Impacto no Petróleo: Bahrein não é um grande produtor, mas a repressão dos \
+                protestos teve apoio de outros países do Golfo, destacando a preocupação regional com a estabilidade.
+                """)
     st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("""
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("""
                 ##### Variação de preço no período
 
-                Bla.
+                A instabilidade política, econômica e social em várias nações produtoras de petróleo aumentaram a \
+                incerteza sobre a oferta, levando a uma alta nos preços do Brent. Em 2011, \
+                o preço do petróleo - que, com a estabilização da crise após 2009, vinha se mantendo \
+                na faixa entre US\$70 e US\$80 - voltou a cruzar a marca dos US\$100 por barril. A incerteza \
+                sobre a continuidade da produção e do transporte de petróleo na região, juntamente com o \
+                risco geopolítico elevado, contribuiu para a alta volatilidade e o aumento dos preços do \
+                durante este período e uma grande oscilação (normalmente acima dos US\$100) nos 3 anos seguintes.
                 """)
-    dados_prim = dados.loc[(dados['DATA'] >= '2009-07-01') & (dados['DATA'] <= '2014-12-31')].copy()
+    dados_prim = dados.loc[(dados['DATA'] >= '2009-07-01') & (dados['DATA'] <= '2014-07-31')].copy()
     dados_prim.reset_index(drop=True, inplace=True)
-    dados_prim_hl = dados_prim.loc[(dados_prim['DATA'] >= '2010-12-17') & (dados_prim['DATA'] <= '2013-12-31')].copy()
+    dados_prim_hl = dados_prim.loc[(dados_prim['DATA'] >= '2010-12-17') & (dados_prim['DATA'] <= '2011-12-31')].copy()
     dados_prim_hl.reset_index(drop=True, inplace=True)
     fig_prim = go.Figure()
     fig_prim.add_trace(go.Scatter(
@@ -409,7 +511,7 @@ with st.expander('Primavera Árabe (2010)', expanded=False):
         yaxis=dict(range=[0, 150]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
-    st.plotly_chart(fig_prim)
+    with col2: st.plotly_chart(fig_prim)
 
 
 with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
