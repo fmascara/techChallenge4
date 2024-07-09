@@ -14,15 +14,12 @@ def formata_numero(valor):
 ## VISUALIZAÇÃO:
 custom_sidebar()
 
-st.subheader(
-    ":red[Tech Challenge Fase 4]",
-    divider="red",
-)
+st.subheader(":red[Tech Challenge Fase 4]", divider="red", anchor=False)
 
-st.title('Estudos sobre o preço do petróleo tipo Brent')
+st.title('Estudos sobre o preço do petróleo tipo Brent', anchor=False)
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.subheader('Sobre este trabalho')
+st.subheader('Sobre este trabalho', anchor=False)
 st.write('O presente estudo foi elaborado como resposta ao Tech Challenge da Fase 4.')
 st.write('Os objetivos aqui são dois:')
 lista_objetivos = """
@@ -35,7 +32,7 @@ lista_objetivos = """
 st.write(lista_objetivos)
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.subheader('Fontes dos dados')
+st.subheader('Fontes dos dados', anchor=False)
 st.write('Os preços para este estudo foram obtidos no site\
             do IPEA, mas são provenientes originalmente da EIA.')
 st.write('IPEA - Instituto de Pesquisa Econômica Aplicada - \
@@ -54,6 +51,24 @@ st.write('EIA - Energy Information Administration - é uma agência \
             sobre a energia e sua interação com a economia e o meio ambiente. ')
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.subheader('Referências')
-
+st.subheader('Referências', anchor=False)
+st.write('https://br.investing.com/analysis/petroleo-brent-entendendo-o-mercado-e-seus-impactos-200463965, \
+         "Petróleo Brent: Entendendo o mercado e seus impactos"')
+st.write('https://blog.toroinvestimentos.com.br/trading/petroleo-brent-wti/, "Petróleo tipo Brent x WTI"')
+st.write('https://www.ipea.gov.br/portal/coluna-3/institucional-sep/quem-somos, "IPEA - Quem somos"')
+st.write('https://economiaenegocios.com/administracao-de-informacoes-de-energia-eia/, "O que é Energy \
+         Information Administration (EIA)"')
+st.write('https://www.politize.com.br/guerra-do-golfo/, "Saiba o que foi a Guerra do Golfo"')
+st.write('https://mundoeducacao.uol.com.br/historiageral/guerra-iraque.htm, "Guerra do Iraque"')
+st.write('https://diplomatique.org.br/vinte-anos-da-guerra-ao-terror/, "Vinte anos da Guerra ao Terror"')
+st.write('https://g1.globo.com/Noticias/Economia_Negocios/0,,MUL940136-9356,00-O+ANO+EM+QUE+O+PETROLEO+ENLOUQUECEU+O+MERCADO.html, \
+         "2008, o ano em que o petróleo enlouqueceu o mercado"')
+st.write('https://www.bbc.com/portuguese/internacional-55379502, "O que foi e como terminou a Primavera Árabe?"')
+st.write('https://www.todamateria.com.br/primavera-arabe/, "Primavera Árabe"')
+st.write('https://exame.com/economia/precos-do-petroleo-se-aproximam-do-fundo-do-poco-de-2008/, \
+         "Preços do petróleo se aproximam do fundo do poço de 2008"')
+st.write(', ""')
+st.write(', ""')
+st.write(', ""')
+st.write(', ""')
 
