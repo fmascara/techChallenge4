@@ -4,13 +4,15 @@ import numpy as np
 from datetime import datetime
 
 # Carregar os dados
-previsao_prophet = pd.read_csv('previsao_prophet.csv', sep=',') #depois mudar pro caminho do git
+#previsao_prophet = pd.read_csv('previsao_prophet.csv', sep=',') #depois mudar pro caminho do git
+previsao_prophet = pd.read_csv('https://raw.githubusercontent.com/fmascara/techChallenge4/main/previsao_prophet.csv')
 previsao_prophet['ds'] = pd.to_datetime(previsao_prophet['ds'])  # Converter a coluna 'ds' para datetime
 previsao_prophet['trend'] = round(previsao_prophet['trend'],2)
 previsao_prophet = previsao_prophet.rename(columns={'ds':'data','trend':'previsao_$'})
 previsao_prophet = previsao_prophet.query("data > '2024-06-20'")
 
-previsao_lstm = pd.read_csv('previsao_lstm.csv', sep=',') #depois mudar pro caminho do git
+#previsao_lstm = pd.read_csv('previsao_lstm.csv', sep=',') #depois mudar pro caminho do git
+previsao_lstm = pd.read_csv('https://raw.githubusercontent.com/fmascara/techChallenge4/main/previsao_lstm.csv')
 previsao_lstm['ds'] = pd.to_datetime(previsao_lstm['ds'])  # Converter a coluna 'ds' para datetime
 previsao_lstm['previsao'] = round(previsao_lstm['previsao'],2)
 previsao_lstm = previsao_lstm.rename(columns={'ds':'data','previsao':'previsao_$'})
