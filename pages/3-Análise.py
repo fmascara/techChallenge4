@@ -3,8 +3,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.express as px
-import numpy as np
-from scipy.stats import gaussian_kde
 from utils.resources import custom_sidebar, config_pagina
 
 config_pagina()
