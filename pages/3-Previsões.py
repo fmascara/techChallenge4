@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import joblib  # ou pickle, dependendo de como você salvou seu modelo
 from datetime import datetime
-import plotly.express as px
 import plotly.graph_objects as go
 from utils.resources import custom_sidebar, config_pagina
 
