@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import numpy as np
 from utils.resources import custom_sidebar, config_pagina
 
 config_pagina()
@@ -14,7 +13,7 @@ def formata_numero(valor):
     return f'{valor:.2f}'
 
 ## TABELAS:
-dados = pd.read_csv('tabela preliminar ipea.txt', sep='\t')
+dados = pd.read_csv('https://raw.githubusercontent.com/fmascara/techChallenge4/main/tabela_preliminar_ipea.txt', sep='\t')
 dados['PREÇO'] = dados['PREÇO'].str.replace(',', '.')
 dados['PREÇO'] = dados['PREÇO'].astype(float)
 dados['DATA'] = pd.to_datetime(dados['DATA'], format='%d/%m/%Y')
@@ -33,7 +32,8 @@ eventos = {
         'Crise financeira global',
         'Primavera Árabe',
         'Grande produção e baixa demanda',
-        'Pandemia de COVID-19'
+        'Pandemia de COVID-19',
+        'Conflito entre Rússia e Ucrânia'
     ],
     'DATA INÍCIO': [
         '1990-08-02',
@@ -42,22 +42,12 @@ eventos = {
         '2008-03-14',
         '2010-12-17',
         '2014-11-26',
-        '2020-03-11'
-    ],
-    'DATA FIM': [
-        '1991-02-28',
-        '1999-03-31',
-        '2011-12-15',
-        '2009-02-17',
-        '2013-12-31',
-        '2016-11-30',
-        '2022-12-31'
+        '2020-03-11',
+        '2022-02-24'
     ]
 }
 df_eventos = pd.DataFrame(eventos)
 df_eventos['DATA INÍCIO'] = pd.to_datetime(df_eventos['DATA INÍCIO'])
-df_eventos['DATA FIM'] = pd.to_datetime(df_eventos['DATA FIM'])
-
 
 
 
@@ -81,7 +71,29 @@ st.write('O preço do Brent é o principal referencial para a \
             Países Exportadores de Petróleo) e outros países produtores.')
 st.markdown("<br><br>", unsafe_allow_html=True)
 
+st.subheader('O que influencia o preço do petróleo?', anchor=False)
+st.markdown("""
+            Apesar de hoje em dia, o Brasil ser um dos maiores produtores de petróleo ao redor do \
+            mundo, a definição do preço no mercado nacional é bastante instável, uma vez que o preço \
+            do barril é definido conforme reage o mercado internacional, sua cotação é em dólar, e \
+            questões internacionais, desastres naturais, e crises políticas afetam diretamente o preço \
+            dos combustíveis.  
 
+            O mercado de petróleo é regularizado pela OPEP com a finalidade de manter estável a produção \
+            desta commodity. Brasil, Estados Unidos e Rússia não fazem parte da OPEP, mas medidas \
+            individuais podem driblar decisões da OPEP e mexer no mercado dos combustíveis. O órgão é composto \
+            por: Angola, Arábia Saudita, Argélia, Emirados Árabes, Gabão, Guiné Equatorial, Irã, Iraque, \
+            Kuwait, Líbia, Nigéria, República do Congo e Venezuela.  
+
+            Quando falamos de desastres naturais, temos que terremotos, tsunamis e outros fenômenos \
+            podem parar a produção local, a exemplo do Japão em 2011, onde um terremoto prejudicou as \
+            refinarias JX Nippon Oil and Energy e Cosmo Oil, que foram atingidas por incêndios.  
+
+            E, quando falamos de geopolítica, com a Guerra na Ucrânia, muitos países abdicaram a importação \
+            de matérias primas oriundas da Rússia, com isso, outros produtores de petróleo precisaram \
+            suprir a demanda, e aumentaram o preço do barril.
+            """)
+st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 
@@ -124,6 +136,7 @@ fig.update_layout(
         xanchor="center",  # Centralizar horizontalmente
         x=0.5  # Posicionar no centro
     ),
+    yaxis=dict(range=[0, 160]),
     xaxis_title="Data",
     yaxis_title="Preço (US$)"
 )
@@ -201,10 +214,11 @@ with st.expander(('Guerra do Golfo (1990)'), expanded=False):
         name='Período de interesse',
         line=dict(color='red')))
     fig_golfo.update_layout(
-        yaxis=dict(range=[0, 60]),
+        yaxis=dict(range=[0, 50]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_golfo)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Crise asiática (1997)', expanded=False):
@@ -283,13 +297,14 @@ with st.expander('Crise asiática (1997)', expanded=False):
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_asia)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Guerra ao Terror (2001)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f":blue[Guerra ao Terror]", anchor=False)
     st.markdown("""
-                'Após sofrer com os atentados de 11 de setembro de 2001, os Estados Unidos \
+                Após sofrer com os atentados de 11 de setembro de 2001, os Estados Unidos \
                 decidiram empreender uma “guerra contra o terror” apontando os governos que \
                 poderiam representar riscos à paz mundial. Nesse sentido, o presidente norte-americano \
                 George W. Bush e seu Conselho de Estado passaram a fazer uma campanha política \
@@ -314,6 +329,7 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns([1,2])
     with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
                 ##### Variação de preço no período
 
@@ -335,7 +351,7 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
                 os preços para patamares nunca atingidos antes. A barreira dos US\$50 foi ultrapassada pela \
                 primeira vez em out/2004, e a dos US\$100 em mar/2008.
                 """)
-    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2008-07-31')].copy()
+    dados_terror = dados.loc[(dados['DATA'] >= '2000-07-01') & (dados['DATA'] <= '2008-06-30')].copy()
     dados_terror.reset_index(drop=True, inplace=True)
     dados_terror_hl = dados_terror.loc[(dados_terror['DATA'] >= '2001-09-11') & (dados_terror['DATA'] <= '2006-12-31')].copy()
     dados_terror_hl.reset_index(drop=True, inplace=True)
@@ -352,10 +368,11 @@ with st.expander('Guerra ao Terror (2001)', expanded=False):
         name='Período de interesse',
         line=dict(color='red')))
     fig_terror.update_layout(
-        yaxis=dict(range=[0, 60]),
+        yaxis=dict(range=[0, 150]),
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_terror)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Crise financeira global (2008)', expanded=False):
@@ -395,6 +412,7 @@ with st.expander('Crise financeira global (2008)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns([1,2])
     with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
                 ##### Variação de preço no período
 
@@ -429,6 +447,7 @@ with st.expander('Crise financeira global (2008)', expanded=False):
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_crise)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Primavera Árabe (2010)', expanded=False):
@@ -483,6 +502,7 @@ with st.expander('Primavera Árabe (2010)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns([1,2])
     with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
                 ##### Variação de preço no período
 
@@ -515,6 +535,7 @@ with st.expander('Primavera Árabe (2010)', expanded=False):
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_prim)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
@@ -557,6 +578,7 @@ with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns([1,2])
     with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
                 ##### Variação de preço no período
 
@@ -590,6 +612,7 @@ with st.expander('Alta oferta, baixa demanda (2014)', expanded=False):
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_ofdem)
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
 
 with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
@@ -628,6 +651,7 @@ with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns([1,2])
     with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.markdown("""
                     ##### Variação de preço no período
 
@@ -661,3 +685,59 @@ with st.expander('Pandemia de COVID-19 (2020)', expanded=False):
         xaxis_title='Data',
         yaxis_title='Preço (US$)')
     with col2: st.plotly_chart(fig_pandemia)
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+
+with st.expander('Conflito entre Rússia e Ucrânia (2022)', expanded=False):
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.subheader(f":blue[Conflito entre Rússia e Ucrânia]", anchor=False)
+    st.markdown("""
+                Trata-se de um conflito atual entre Rússia e Ucrânia, ainda em andamento e sem \
+                perspectiva de fim, que merece uma atenção especial. A \
+                intenção de Putin era tomar a capital ucraniana, Kiev, mas as tropas russas foram \
+                repelidas pelas ucranianas. Esta é uma guerra bastante sensível, pois de um lado passamos \
+                a ter os Estados Unidos e a União Europeia como apoiadores da Ucrânia, fornecendo apoio \
+                econômico, diplomático e militar a Kiev, enquanto China, Irã e Coreia do Norte apoiavam a Rússia.
+                
+                A participação da Rússia no setor de combustíveis fez com que a cotação do petróleo tivesse subido \
+                ao patamar mais elevado desde a crise econômica de 2008. Em cerca de três semanas, o preço \
+                cresceu mais de 20%. O petróleo representa mais da metade do volume de negociação das mercadorias \
+                e é a principal matriz energética do mundo, com isso a Rússia é responsável por 12% da produção \
+                global de óleo e gás e, além disso, é o principal exportador mundial de petróleo e produtos \
+                petrolíferos combinados. Grande parte da produção é destinada à UE, o que fragiliza uma \
+                resposta mais enfática desses países contra o presidente russo Vladimir Putin, especialmente \
+                em meio a um inverno rigoroso, em que os europeus dependem do gás russo para a calefação.
+                """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2 = st.columns([1,2])
+    with col1:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        st.markdown("""
+                    ##### Variação de preço no período
+
+                    O preço saltou mais de 20% em 3 semanas, provocando problemas em inúmeras economias, \
+                    pois além de ocasionar o aumento no petróleo, outras atividades econômicas foram \
+                    impactadas, como a importação de arroz, grãos, óleo, gás, remédios, entre outros.
+                    """)
+    dados_ucrania = dados.loc[(dados['DATA'] >= '2021-07-01') & (dados['DATA'] <= '2023-12-31')].copy()
+    dados_ucrania.reset_index(drop=True, inplace=True)
+    dados_ucrania_hl = dados_ucrania.loc[(dados_ucrania['DATA'] >= '2022-02-24') & (dados_ucrania['DATA'] <= '2023-02-28')].copy()
+    dados_ucrania_hl.reset_index(drop=True, inplace=True)
+    fig_ucrania = go.Figure()
+    fig_ucrania.add_trace(go.Scatter(
+        x=dados_ucrania['DATA'],
+        y=dados_ucrania['PREÇO'],
+        mode='lines',
+        name='Preço'))  
+    fig_ucrania.add_trace(go.Scatter(
+        x=dados_ucrania_hl['DATA'],
+        y=dados_ucrania_hl['PREÇO'],
+        mode='lines',
+        name='Período de interesse',
+        line=dict(color='red')))
+    fig_ucrania.update_layout(
+        yaxis=dict(range=[0, 150]),
+        xaxis_title='Data',
+        yaxis_title='Preço (US$)')
+    with col2: st.plotly_chart(fig_ucrania)
+    st.markdown("<br><br>", unsafe_allow_html=True)
