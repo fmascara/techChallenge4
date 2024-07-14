@@ -55,7 +55,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
 # Definindo as abas
-tabs = st.tabs(["Previsão com o Prophet", "Previsão com o LSTM", "Métricas de performance", "Insight das medidas de erros dos modelos"])
+tabs = st.tabs(["Previsão com o Prophet", "Previsão com o LSTM", "Métricas de performance", "Análise dos resultados obtidos"])
 
 # Conteúdo da Aba 1
 with tabs[0]:
@@ -168,7 +168,7 @@ with tabs[1]:
     with st.container(border=True, height=150):
         st.markdown("#### Resultados de performance obtidos")
         col1, col2, col3 = st.columns(3)
-        with col1: st.markdown("### MSE: 0,0000102502%")
+        with col1: st.markdown("### MSE: 0,0000103%")
         with col2: st.markdown("### RMSE: 0,3202%")
         with col3: st.markdown("### MAPE: 2,80%")
 
@@ -284,14 +284,55 @@ with tabs[3]:
                 apresentaram características bem distintas, se comparadas, mas devemos levar algumas \
                 particularidades e escolhas de hiperparâmetros que fizemos em consideração:
                 """)
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""            
                 **1. A complexidade e capacidade de cada modelo**  
-	                - LSTM: É uma variante das redes neurais recorrentes (RNN) e é particularmente \
+                - <u>LSTM</u>: É uma variante das redes neurais recorrentes (RNN) e é particularmente \
                 eficaz para capturar dependências de longo prazo e padrões complexos em séries temporais. \
                 Ele pode se adaptar melhor às nuances dos dados de preço do petróleo, que podem incluir tendências \
                 não lineares e efeitos de longo prazo.  
-	                - Prophet: É um modelo aditivo adequado para séries temporais com fortes componentes \
+                - <u>Prophet</u>: É um modelo aditivo adequado para séries temporais com fortes componentes \
                 sazonais e tendências. Ele é projetado para ser fácil de usar e interpretar, mas pode não \
                 capturar a mesma complexidade que um LSTM em dados altamente voláteis e não lineares.
-                """)
+                """, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""            
+                **2. Natureza dos dados**  
+                - <u>Volatilidade do Preço do Petróleo</u>: O preço do petróleo é altamente volátil e pode ser \
+                influenciado por muitos fatores externos, como eventos geopolíticos, mudanças na demanda e \
+                oferta, e decisões da OPEP. O LSTM pode ter uma vantagem aqui devido à sua capacidade de lidar \
+                com tais padrões complexos.  
+                - <u>Estrutura dos Dados</u>: Se houver padrões sazonais ou tendências claras nos dados de preço do \
+                petróleo, o Prophet pode capturar alguns desses componentes, mas pode não ser suficiente para \
+                lidar com todas as variações não lineares presentes nos dados.
+                """, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""            
+                **3. Hiperparâmetros e treinamento**  
+                - <u>LSTM</u>: O desempenho do LSTM é muito mais sensível à escolha dos hiperparâmetros (como o \
+                número de neurônios, camadas, taxa de aprendizado, etc.). O que pode deixar uma previsão com esse \
+                modelo muito mais precisa.  
+                - <u>Prophet</u>: Embora o Prophet exija menos ajuste de hiperparâmetros, ele ainda depende de \
+                uma configuração adequada (uma que usamos foi a escolha dos intervalos de sazonalidade).
+                """, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""            
+                **4. Volume de dados**  
+                - <u>Dados de Treinamento</u>: A quantidade de dados usados para treinar cada modelo pode afetar \
+                seu desempenho. O LSTM, em particular, pode se beneficiar de grandes quantidades de dados para \
+                aprender melhor os padrões subjacentes. Neste estudo utilizamos o mesmo período para o treinamento \
+                nos dois modelos(01/01/2020 até 20/06/2024) e o mesmo período (30 dias) para previsão.
+                """, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("""            
+                **E qual modelo se saiu melhor no contexto apresentado?**  
+                Os resultados sugerem que o modelo LSTM está se saindo melhor do que o Prophet na previsão dos preços \
+                do barril de petróleo para o período analisado. Isso pode ser  devido à capacidade do LSTM de capturar \
+                padrões mais complexos e dependências temporais nos dados como comentamos acima. Para previsões de \
+                preços do petróleo, onde há alta volatilidade e padrões não lineares complexos, o modelo LSTM oferece \
+                uma abordagem mais robusta e precisa.  
+                Enquanto o Prophet é eficaz em capturar tendências sazonais e componentes simples, ele pode não ter \
+                conseguido capturar adequadamente a complexidade dos dados de preço do petróleo com os hiperparâmetros \
+                escolhidos no estudo.
+                """, unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
