@@ -29,7 +29,7 @@ st.markdown("""
             
             Em 20 de março de 2003, as forças americanas e aliadas invadiram o Iraque e derrubaram o \
             regime de Saddam Hussein. Os EUA disseram que o Iraque tinha armas de destruição em massa e \
-            era uma ameaça à paz internacional. [7] Com isso, gerou-se uma preocupação alarmante, pois \
+            era uma ameaça à paz internacional. Com isso, gerou-se uma preocupação alarmante, pois \
             como o Oriente Médio detinha grande parte da produção de petróleo, o abastecimento mundial \
             ficou comprometido, tendo a necessidade de aumentar os preços de petróleo advindos de outros produtores.
             
@@ -84,7 +84,7 @@ st.markdown("""
             Muito se fala ao redor do mundo, a respeito de novas fontes de energia, sendo sempre abordado as \
             Fontes de Energias Renováveis , como a hídrica (energia da água dos rios), solar (energia do sol), \
             eólica (energia do vento), biomassa (energia de matéria orgânica), geotérmica (energia do interior \
-            da Terra) e oceânica (energia das marés e das ondas) [9], com isso, a energia advinda de combustíveis \
+            da Terra) e oceânica (energia das marés e das ondas), com isso, a energia advinda de combustíveis \
             tende a diminuir  ao decorrer do tempo, promovendo uma menor demanda dos produtores. Além do que, \
             são mudanças que afetam positivamente a sustentabilidade mundial.
             
